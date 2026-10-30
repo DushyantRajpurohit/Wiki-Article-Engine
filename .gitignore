@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+# Raw LLM responses; the jsonl files keep everything the report needs
+data/llm_cache.sqlite

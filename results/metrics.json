@@ -1,0 +1,67 @@
+{
+  "judge": "gemini-3.1-flash-lite",
+  "summarizers": {
+    "gemini-3.5-flash-lite": {
+      "summaries": 29,
+      "sentences": 164,
+      "flagged": 12,
+      "contradicted": 1,
+      "not_found": 0,
+      "unquotable": 11,
+      "missing": 0
+    },
+    "gemini-3.5-flash": {
+      "summaries": 18,
+      "sentences": 105,
+      "flagged": 6,
+      "contradicted": 0,
+      "not_found": 0,
+      "unquotable": 6,
+      "missing": 0
+    }
+  },
+  "planted_errors": {
+    "negation": {
+      "n": 25,
+      "caught": 25,
+      "untouched": 116,
+      "stable": 110
+    },
+    "entity": {
+      "n": 23,
+      "caught": 23,
+      "untouched": 106,
+      "stable": 104
+    },
+    "addition": {
+      "n": 29,
+      "caught": 29,
+      "untouched": 135,
+      "stable": 124
+    },
+    "number": {
+      "n": 20,
+      "caught": 19,
+      "untouched": 93,
+      "stable": 89
+    }
+  },
+  "human": {
+    "flag_precision": [
+      0,
+      0
+    ],
+    "miss_rate": [
+      0,
+      0
+    ],
+    "swaps_still_true": [
+      0,
+      0
+    ]
+  },
+  "blocked": [
+    "Edison Chen (`gemini-3.5-flash-lite`, summarizing)",
+    "Edison Chen (`gemini-3.5-flash`, summarizing)"
+  ]
+}

@@ -7,7 +7,7 @@
 | Summarizer | Summaries | Sentences | Flagged | Contradicted | Not in article | Supported, but quote not found |
 |---|---|---|---|---|---|---|
 | `gemini-3.5-flash-lite` | 29 | 164 | 7.3% (4–12) | 0.6% (0–3) | 0.0% (0–2) | 6.7% (4–12) |
-| `gemini-3.5-flash` | 18 | 105 | 5.7% (3–12) | 0.0% (0–4) | 0.0% (0–4) | 5.7% (3–12) |
+| `gemini-3.5-flash` | 29 | 169 | 5.9% (3–11) | 0.0% (0–2) | 0.0% (0–2) | 5.9% (3–11) |
 
 ## Does the judge catch planted errors?
 
@@ -24,4 +24,8 @@
 
 ## Does the judge agree with a human?
 
-Not reviewed yet: run `python -m wikieval review`.
+| Check | Result |
+|---|---|
+| Judge's flags the human agrees with (precision) | 31.8% (16–53) of 22 |
+| Sentences the judge passed that the human found unfaithful (misses) | 40.9% (23–61) of 22 |
+| Missed entity swaps that are, by chance, still true | 0 of 0 |

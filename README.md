@@ -6,7 +6,25 @@ This project summarises a fixed sample of real Wikipedia articles with Gemini, c
 
 ## Results
 
-**Not run yet.** The tables will come from `results/report.md` once the pipeline has run.
+30 Wikipedia articles, judged by `gemini-3.1-flash-lite`. 95% Wilson intervals in brackets. Full tables are in [`results/report.md`](results/report.md).
+
+| Summarizer | Summaries | Sentences | Flagged by the judge |
+|---|---|---|---|
+| `gemini-3.5-flash-lite` | 29 | 164 | 7.3% (4–12) |
+| `gemini-3.5-flash` | 29 | 169 | 5.9% (3–11) |
+
+A flag is not a confirmed error, and the intervals overlap, so this does not show one model is better. Edison Chen was refused by the safety filter for both models.
+
+**Planted errors caught by the judge:**
+
+| Planted error | Caught |
+|---|---|
+| negation | 25 of 25 |
+| entity | 23 of 23 |
+| addition | 29 of 29 |
+| number | 19 of 20 |
+
+**Human review is preliminary.** My first blind pass agreed with 7 of the judge's 22 flags and marked 9 of 22 passed sentences unfaithful. Don't rely on those figures yet: the review tool often didn't show the passage containing the evidence, and some labels look wrong on a second look. The review will be redone.
 
 ## Method
 
@@ -16,13 +34,14 @@ This project summarises a fixed sample of real Wikipedia articles with Gemini, c
 
 **3. A judge that has to show its evidence.** A judge model sees the article and the numbered summary sentences. For each sentence it returns `supported`, `contradicted` or `not_found`, plus a quote from the article. **The quote is then checked against the article in code.** A sentence counts as unfaithful if the judge says so, *or* if the judge says "supported" but its quote isn't actually in the article. LLM judges do invent evidence, and this catches it.
 
-**4. Testing the judge on planted errors.** One sentence per summary is changed on purpose, three ways:
+**4. Testing the judge on planted errors.** One sentence per summary is changed on purpose, four ways:
 
 | Kind | Example | Built so that |
 |---|---|---|
 | negation | was built → was **not** built | blatant; a judge should never miss it |
 | number | in 1952 → in **1957** | the new value appears nowhere in the article |
 | entity | the Royal Navy → the **British Army** | the new name comes from the same article, which makes it hard |
+| addition | a clause is added to the end of the sentence | the added claim uses a year the article never mentions |
 
 The true answer is known for every planted error, so the catch rate is measured, not estimated. The test also checks that the judge's verdicts on the *untouched* sentences stay the same when one sentence changes.
 

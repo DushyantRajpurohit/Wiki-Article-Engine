@@ -11,12 +11,12 @@
       "missing": 0
     },
     "gemini-3.5-flash": {
-      "summaries": 18,
-      "sentences": 105,
-      "flagged": 6,
+      "summaries": 29,
+      "sentences": 169,
+      "flagged": 10,
       "contradicted": 0,
       "not_found": 0,
-      "unquotable": 6,
+      "unquotable": 10,
       "missing": 0
     }
   },
@@ -48,12 +48,12 @@
   },
   "human": {
     "flag_precision": [
-      0,
-      0
+      7,
+      22
     ],
     "miss_rate": [
-      0,
-      0
+      9,
+      22
     ],
     "swaps_still_true": [
       0,
